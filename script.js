@@ -23,5 +23,5 @@ ctx.fillStyle = 'turquoise';
 ctx.fillRect (0, 0, cnv.width, cnv.height);
 
 //create deeppink square
-ctx.fillStyle = 'deeppink';
-ctx.fillRect (150, 150, 100, 100);
+ctx.strokeStyle = 'deeppink';
+ctx.strokeRect (150, 150, 100, 100);
