@@ -5,7 +5,7 @@ document.body.style.overflow = 'hidden'
 let x = 0
 let y = 0
 
-const cnv = document.createElement('canvas');
+const cnv  = document.createElement('canvas');
 cnv.width  = 600
 cnv.height = 600
 document.body.appendChild(cnv)
@@ -15,11 +15,11 @@ ctx.fillStyle = 'black'
 ctx.fillRect (0, 0, cnv.width, cnv.height) 
 
 function drawPoint() {
-    ctx.strokeStyle = 'white'
+    ctx.fillStyle = 'white'
     // strokeWeight(1)
-    let px = map(x, -2.1820, 2.6558, 0, cnv.width)
-    let py = map(y, 0, 9.9980, cnv.height, 0)
-    ctx.fillRect(px ,py, 1, 1);  //possibly draws a rectangle at the next point that is the size of one pixel??
+    let px = map (x, -2.1820, 2.6558, 0, cnv.width)
+    let py = map (y, 0, 9.9980, cnv.height, 0)
+    ctx.fillRect (px ,py, 1, 1);  //possibly draws a rectangle at the next point that is the size of one pixel??
 }
 
 requestAnimationFrame (draw_frame)
@@ -36,7 +36,7 @@ function nextPoint () {
     let nextX
     let nextY
     
-    let r = random(1)
+    let r = Math.random(1)
     
     if (r <= 0.01) {
     // 1
@@ -61,4 +61,11 @@ function nextPoint () {
     
     x = nextX
     y = nextY
+  }
+
+  function map (v, i_min, i_max, o_min, o_max) {
+    const i_range = i_max - i_min
+    const o_range = o_max - o_min
+    const i_norm  = (v -i_min) / i_range
+    return i_norm * o_range + o_min
   }
